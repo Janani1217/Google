@@ -75,3 +75,32 @@ class Solution {
         return false;
     }
 }
+
+
+
+// optiomal : finding gcd of 2 jugs and check if its dividing target or not : 
+// gcd is used when we need to find if some combination exixist which could give us target:
+
+
+
+class Solution {
+    public int gcd(int x, int y) {
+        if(y == 0)
+            return x;
+        
+        return gcd(y, x%y);
+    }
+
+    public boolean canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity) {
+        if(jug1Capacity + jug2Capacity < targetCapacity)
+            return false;
+        
+        if(targetCapacity == jug1Capacity || jug2Capacity == targetCapacity || targetCapacity == jug1Capacity + jug2Capacity)
+            return true;
+
+        if(targetCapacity % gcd(jug1Capacity, jug2Capacity) == 0)
+            return true;
+    
+        return false;
+    }
+}
