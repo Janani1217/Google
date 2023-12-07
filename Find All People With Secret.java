@@ -49,10 +49,19 @@ class unionFind {
 }
 
 class Solution {
+  private TreeMap<Integer, List<int[]>> build(int[][] meetings) {
+    TreeMap<Integer, List<int[]>> tree = new TreeMap<>();
+    for(int[] m : meetings){
+      tree.putIfAbsent(m[2] , new ArrayList<>());
+      tree.get(m[2]).add(m);
+    }
+    return tree;
+  }
+  
   public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {
 
     // prep treemap instead of adj list : to store ts value for sorted 
-    TreeMap<Integer, List<int[]>> tree = new TreeMap<>();
+    TreeMap<Integer, List<int[]>> tree = build(meetings);
 
     unionFind uf = new unionFind(n);
     uf.union(0, firstPerson); // *** //
