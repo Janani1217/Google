@@ -20,7 +20,8 @@ The height of an inverse pyramid is the number of rows it covers. Let (r, c) be 
 and its height be h. Then, the plot comprises of cells (i, j) 
 where r - h + 1 <= i <= r and c - (r - i) <= j <= c + (r - i).
 
-
+Given a 0-indexed m x n binary matrix grid representing the farmland, return the total number of 
+pyramidal and inverse pyramidal plots that can be found in grid.
 
 
 // DP approach : think of : very direct :
